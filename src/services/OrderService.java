@@ -1,3 +1,4 @@
+// src/services/OrderService.java
 package services;
 
 import daos.OrderDAO;
@@ -15,7 +16,33 @@ public class OrderService {
     public void saveOrder(Order order) throws IOException {
         orderDAO.saveOrder(order);
     }
-    public void updateOrder(Order order)throws IOException{
-        orderDAO.updateOrder(order);
+
+    public void updateOrder(Order updatedOrder) throws IOException {
+        Order existingOrder = null;
+        for (Order order : orderDAO.getAllOrders()) {
+            if (order.getOrderId().equals(updatedOrder.getOrderId())) {
+                existingOrder = order;
+                break;
+            }
+        }
+
+        if (existingOrder != null) {
+            if (updatedOrder.getDescription() != null && !updatedOrder.getDescription().trim().isEmpty()) {
+                existingOrder.setDescription(updatedOrder.getDescription());
+            }
+            if (updatedOrder.getCustomerPhone() != null && !updatedOrder.getCustomerPhone().trim().isEmpty()) {
+                existingOrder.setCustomerPhone(updatedOrder.getCustomerPhone());
+            }
+            if (updatedOrder.getWarehouseId() != null) {
+                existingOrder.setWarehouseId(updatedOrder.getWarehouseId());
+            }
+            if (updatedOrder.getDriverId() != null) {
+                existingOrder.setDriverId(updatedOrder.getDriverId());
+            }
+            if (updatedOrder.getDeliveryStatus() != null && !updatedOrder.getDeliveryStatus().trim().isEmpty()) {
+                existingOrder.setDeliveryStatus(updatedOrder.getDeliveryStatus());
+            }
+            orderDAO.updateOrder(existingOrder);
+        }
     }
 }

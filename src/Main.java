@@ -1,3 +1,4 @@
+// src/Main.java
 import controllers.AuthController;
 import controllers.OrderController;
 import controllers.UserController;
@@ -50,22 +51,7 @@ public class Main {
                 System.out.println(order.getOrderId() + ", " + order.getDescription() + ", " + order.getCustomerPhone() + ", " + order.getWarehouseId() + ", " + order.getDriverId() + ", " + order.getDeliveryStatus());
             }
 
-            System.out.println("\nEnter order details to update (orderId, description, customerPhone, warehouseId, driverId, deliveryStatus):");
-            System.out.print("orderId to update: ");
-            long updateOrderId = Long.parseLong(reader.readLine());
-            System.out.print("description: ");
-            String updateDescription = reader.readLine();
-            System.out.print("customerPhone: ");
-            String updateCustomerPhone = reader.readLine();
-            System.out.print("warehouseId: ");
-            long updateWarehouseId = Long.parseLong(reader.readLine());
-            System.out.print("driverId: ");
-            long updateDriverId = Long.parseLong(reader.readLine());
-            System.out.print("deliveryStatus: ");
-            String updateDeliveryStatus = reader.readLine();
-
-            Order updateOrder = new Order(updateOrderId, updateDescription, updateCustomerPhone, updateWarehouseId, updateDriverId, updateDeliveryStatus);
-            orderController.updateOrder(updateOrder);
+            orderController.updateOrder(); // Corrected to call updateOrder without arguments
 
             System.out.println("\nUpdated Orders after update:");
             orders = orderController.getAllOrders();
