@@ -51,7 +51,7 @@ public class Main {
                 System.out.println(order.getOrderId() + ", " + order.getDescription() + ", " + order.getCustomerPhone() + ", " + order.getWarehouseId() + ", " + order.getDriverId() + ", " + order.getDeliveryStatus());
             }
 
-            orderController.updateOrder(); // Corrected to call updateOrder without arguments
+            orderController.updateOrder();
 
             System.out.println("\nUpdated Orders after update:");
             orders = orderController.getAllOrders();
@@ -129,6 +129,8 @@ public class Main {
             User authenticatedUser = authController.authenticate(authUsername, authPassword);
             if (authenticatedUser != null) {
                 System.out.println("\nAuthentication successful: " + authenticatedUser.getUsername());
+                // You can add further actions here based on the authenticated user's role.
+                System.out.println("Role: " + authenticatedUser.getRole());
             } else {
                 System.out.println("\nAuthentication failed.");
             }

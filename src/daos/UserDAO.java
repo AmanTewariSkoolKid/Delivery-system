@@ -1,3 +1,4 @@
+// src/daos/UserDAO.java
 package daos;
 
 import entities.User;
@@ -19,9 +20,18 @@ public class UserDAO {
         users.add(user);
     }
 
+    public User findUserByCredentials(String username, String password) {
+        for (User user : users) {
+            if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
+                return user;
+            }
+        }
+        return null; // User not found
+    }
+
     private void populateUsers() {
-        users.add(new User(1L, "admin", "password", "ADMIN", "111-222-3333", "Admin User"));
-        users.add(new User(2L, "employee", "password2", "EMPLOYEE", "444-555-6666", "Employee User"));
-        users.add(new User(3L, "driver", "password3", "DRIVER", "777-888-9999", "Driver User"));
+        users.add(new User(1L, "admin", "password", "admin", "123-456-7890", "Admin User"));
+        users.add(new User(2L, "user1", "pass123", "user", "987-654-3210", "Regular User"));
+        users.add(new User(3L, "user2", "secure", "user", "555-123-4567", "Another User"));
     }
 }
