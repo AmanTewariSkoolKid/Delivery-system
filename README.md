@@ -1,100 +1,165 @@
-# E-Commerce Delivery System
+# Delivery System Application
 
-This Java application simulates a simplified e-commerce delivery system, demonstrating core object-oriented principles and basic data management. It manages orders, users, and warehouses using in-memory data structures, providing a foundation for more complex delivery system implementations.
+This is a Java-based delivery system application designed to manage orders, users, and warehouses, along with user authentication.
 
-## Project Structure
-delivery-system/
-├── src/
-│   ├── Main.java
-│   ├── entities/
-│   │   ├── Order.java
-│   │   ├── User.java
-│   │   └── Warehouse.java
-│   ├── daos/
-│   │   ├── OrderDAO.java
-│   │   ├── UserDAO.java
-│   │   └── WarehouseDAO.java
-│   ├── services/
-│   │   ├── OrderService.java
-│   │   ├── UserService.java
-│   │   ├── WarehouseService.java
-│   │   └── AuthenticationService.java
-│   └── controllers/
-│       ├── OrderController.java
-│       ├── UserController.java
-│       ├── WarehouseController.java
-│       └── AuthController.java
-└── README.md
-* **`src/`**: Contains all Java source code files.
-    * **`Main.java`**: Application entry point, orchestrating controller interactions.
-    * **`entities/`**: Data model classes representing core business entities.
-        * **`Order.java`**: Represents an order with attributes like order ID, description, customer phone, warehouse ID, and delivery status.
-        * **`User.java`**: Represents a system user with attributes like user ID, username, password, role, contact information, and name.
-        * **`Warehouse.java`**: Represents a warehouse with attributes like warehouse ID, name, location, contact, and phone.
-    * **`daos/`**: Data Access Objects managing data persistence (in this case, in-memory lists).
-        * **`OrderDAO.java`**: Manages `Order` data.
-        * **`UserDAO.java`**: Manages `User` data.
-        * **`WarehouseDAO.java`**: Manages `Warehouse` data.
-    * **`services/`**: Business logic implementations.
-        * **`OrderService.java`**: Provides order-related operations.
-        * **`UserService.java`**: Provides user-related operations.
-        * **`WarehouseService.java`**: Provides warehouse-related operations.
-        * **`AuthenticationService.java`**: Handles user authentication.
-    * **`controllers/`**: Handles application logic and user interactions.
-        * **`OrderController.java`**: Manages order-related requests.
-        * **`UserController.java`**: Manages user-related requests.
-        * **`WarehouseController.java`**: Manages warehouse-related requests.
-        * **`AuthController.java`**: Manages authentication requests.
-* **`README.md`**: Project documentation.
+## Features
 
-## Functionality
+* **Order Management:**
+    * Create, update, and view orders.
+    * Track order status (delivered, in transit, pending).
+* **User Management:**
+    * Create, update, and view user accounts.
+    * Manage user roles (admin, user).
+* **Warehouse Management:**
+    * Create, update, and view warehouse information.
+* **User Authentication:**
+    * Secure user login using username and password.
+    * GUI Login page with background image.
 
-* **Order Management**: Create, retrieve, and update orders.
-* **User Management**: Create and retrieve users.
-* **Warehouse Management**: Create and retrieve warehouses.
-* **Authentication**: Basic user authentication.
+## Prerequisites
 
-## Getting Started
+* Java Development Kit (JDK) 8 or later.
 
-### Prerequisites
+## Setup and Installation
 
-* Java Development Kit (JDK) installed (version 8 or higher recommended).
-* A command-line interface (e.g., Terminal, Command Prompt).
-
-### Compilation
-
-1.  Clone the repository to your local machine.
-2.  Navigate to the project's root directory (`delivery-system`).
-3.  Compile the Java source files:
+1.  **Clone the repository:**
 
     ```bash
-    javac src/Main.java src/entities/*.java src/daos/*.java src/services/*.java src/controllers/*.java
+    git clone <repository_url>
     ```
 
-    This command compiles all `.java` files and generates `.class` files in the corresponding directories.
+2.  **Navigate to the project directory:**
 
-### Execution
+    ```bash
+    cd Delivery-system
+    ```
 
-1.  Ensure you are in the project's root directory.
-2.  Run the application:
+3.  **Compile the Java source files:**
+
+    ```bash
+    cd src
+    javac Main.java entities/*.java daos/*.java services/*.java controllers/*.java LoginGUI.java
+    ```
+
+4.  **Run the application (GUI Login):**
+
+    ```bash
+    cd ..
+    java LoginGUI
+    ```
+
+    * Alternatively, to run the console version, run:
 
     ```bash
     java Main
     ```
 
-    This executes the `Main` class, initiating the application.
+## File Structure****
+
+Coding partner
+Markdown
+
+# Delivery System Application
+
+This is a Java-based delivery system application designed to manage orders, users, and warehouses, along with user authentication.
+
+## Features
+
+* **Order Management:**
+    * Create, update, and view orders.
+    * Track order status (delivered, in transit, pending).
+* **User Management:**
+    * Create, update, and view user accounts.
+    * Manage user roles (admin, user).
+* **Warehouse Management:**
+    * Create, update, and view warehouse information.
+* **User Authentication:**
+    * Secure user login using username and password.
+    * GUI Login page with background image.
+
+## Prerequisites
+
+* Java Development Kit (JDK) 8 or later.
+
+## Setup and Installation
+
+1.  **Clone the repository:**
+
+    ```bash
+    git clone <repository_url>
+    ```
+
+2.  **Navigate to the project directory:**
+
+    ```bash
+    cd Delivery-system
+    ```
+
+3.  **Compile the Java source files:**
+
+    ```bash
+    cd src
+    javac Main.java entities/*.java daos/*.java services/*.java controllers/*.java LoginGUI.java
+    ```
+
+4.  **Run the application (GUI Login):**
+
+    ```bash
+    cd ..
+    java LoginGUI
+    ```
+
+    * Alternatively, to run the console version, run:
+
+    ```bash
+    java Main
+    ```
+
+## File Structure
+
+Delivery-system/
+├── src/
+│   ├── Main.java              // Main application entry point.
+│   ├── LoginGUI.java          // GUI Login screen.
+│   ├── controllers/           // Contains controller classes.
+│   │   ├── AuthController.java   // Handles user authentication.
+│   │   ├── OrderController.java  // Handles order-related operations.
+│   │   ├── UserController.java // Handles user-related operations.
+│   │   └── WarehouseController.java // Handles warehouse-related operations.
+│   ├── daos/                  // Contains data access object classes.
+│   │   ├── OrderDAO.java       // Data access for orders.
+│   │   ├── UserDAO.java        // Data access for users.
+│   │   └── WarehouseDAO.java   // Data access for warehouses.
+│   ├── entities/              // Contains entity classes.
+│   │   ├── Order.java          // Represents an order.
+│   │   ├── User.java           // Represents a user.
+│   │   └── Warehouse.java      // Represents a warehouse.
+│   ├── services/              // Contains service classes.
+│   │   ├── AuthenticationService.java // Handles authentication logic.
+│   │   ├── OrderService.java     // Handles order-related business logic.
+│   │   ├── UserService.java    // Handles user-related business logic.
+│   │   └── WarehouseService.java // Handles warehouse-related business logic.
+└── README.md              // This file.
+## Usage
+
+* **Login:**
+    * Run the `LoginGUI` application.
+    * Enter your username and password.
+    * Click "Sign in."
+* **Main Application (Console):**
+    * Once logged in (or if running `Main.java`) follow the on-screen prompts to manage orders, users, and warehouses.
 
 ## Notes
 
-* The application uses in-memory lists for data storage, meaning data is not persisted between application restarts.
-* The `Main.class` file should be generated at the root of the project folder after compilation.
-* The `controllers` folder must be inside the `src` folder for the compilation to run correctly.
-* This is a simplified simulation, intended for educational and demonstration purposes.
+* Replace `"login_background.png"` in `LoginGUI.java` with the actual path to your login background image.
+* The application uses in-memory data storage. For persistent storage, integrate with a database.
+* The `openMainApplication()` method in `LoginGUI.java` is a placeholder. Replace it with the code to open your main application window.
+* The console version of the app is still fully functional, if you do not want to use the GUI.
 
 ## Contributing
 
-Contributions are welcome. Please fork the repository, create a feature branch, and submit a pull request.
+Feel free to contribute to this project by submitting pull requests or reporting issues.
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the MIT License.
