@@ -33,5 +33,6 @@ public class UserDAO {
         users.add(new User(1L, "admin", "password", "admin", "123-456-7890", "Admin User"));
         users.add(new User(2L, "user1", "pass123", "user", "987-654-3210", "Regular User"));
         users.add(new User(3L, "user2", "secure", "user", "555-123-4567", "Another User"));
+        users.add(new User(4L, "user3", "password", "user", "123-456-7890", "Yet Another User"));
     }
 }
