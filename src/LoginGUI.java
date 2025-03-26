@@ -27,11 +27,11 @@ public class LoginGUI extends JFrame {
         setLayout(null);
 
         // Load and set the background image
-        ImageIcon imageIcon = new ImageIcon("login_background.png"); // Replace with your image path
-        Image image = imageIcon.getImage().getScaledInstance(600, 400, Image.SCALE_SMOOTH);
+        ImageIcon imageIcon = new ImageIcon("login_bg.jpg"); // Replace with your image path
+        Image image = imageIcon.getImage().getScaledInstance(640, 480, Image.SCALE_SMOOTH);
         imageIcon = new ImageIcon(image);
         imageLabel = new JLabel(imageIcon);
-        imageLabel.setBounds(0, 0, 600, 400);
+        imageLabel.setBounds(0, 0, 640, 480);
         add(imageLabel);
 
         // Create a panel for login components
