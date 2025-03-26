@@ -1,0 +1,3 @@
+javac AdminDashboardGUI.java LoginGUI.java controllers/*.java entities/*.java daos/*.java services/*.java
+
+java LoginGUI

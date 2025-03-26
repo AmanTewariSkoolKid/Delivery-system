@@ -28,6 +28,15 @@ public class OrderDAO {
         }
     }
 
+    public Order getOrderById(Long orderId) { // Change parameter type to Long
+        for (Order order : orders) {
+            if (order.getOrderId().equals(orderId)) { // Use .equals() for Long comparison
+                return order;
+            }
+        }
+        return null;
+    }
+
     private void populateOrders() {
         orders.add(new Order(1L, "Laptop", "123-456-7890", 1L, 1L, "Delivered"));
         orders.add(new Order(2L, "Phone", "098-765-4321", 2L, 2L, "In Transit"));

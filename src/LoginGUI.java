@@ -18,7 +18,7 @@ public class LoginGUI extends JFrame {
         authController = new AuthController();
 
         setTitle("Login");
-        setSize(600, 400); // Increased size to better fit image
+        setSize(600, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
 
@@ -33,7 +33,7 @@ public class LoginGUI extends JFrame {
         // Panel for login components
         JPanel loginPanel = new JPanel();
         loginPanel.setLayout(new GridLayout(3, 2));
-        loginPanel.setBounds(50, 200, 300, 100); // Adjusted position
+        loginPanel.setBounds(50, 200, 300, 100);
         loginPanel.setOpaque(false);
         imageLabel.add(loginPanel);
 
@@ -60,7 +60,13 @@ public class LoginGUI extends JFrame {
 
                 if (authenticatedUser != null) {
                     JOptionPane.showMessageDialog(LoginGUI.this, "Authentication successful: " + authenticatedUser.getUsername());
-                    openMainApplication();
+                    if ("admin".equals(authenticatedUser.getRole())) {
+                        dispose(); // Close LoginGUI
+                        new AdminDashboardGUI(authenticatedUser); //Open AdminDashboardGUI
+                    } else {
+                        openMainApplication();
+                    }
+
                 } else {
                     JOptionPane.showMessageDialog(LoginGUI.this, "Authentication failed.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -71,8 +77,8 @@ public class LoginGUI extends JFrame {
     }
 
     private void openMainApplication() {
-        //Replace this with your main application window opening code.
-        JOptionPane.showMessageDialog(LoginGUI.this, "Main application would open here.");
+        JOptionPane.showMessageDialog(LoginGUI.this, "Main App would open here");
+        // Replace this with your actual main application opening logic.
     }
 
     public static void main(String[] args) {
