@@ -1,4 +1,6 @@
 // src/Main.java
+// This is the main entry point for the Delivery System application
+// It demonstrates the use of various controllers to manage orders, users, warehouses, and authentication
 import controllers.AuthController;
 import controllers.OrderController;
 import controllers.UserController;
@@ -11,23 +13,32 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
 
+/**
+ * Main class that provides a command-line interface to interact with the delivery system.
+ * Demonstrates CRUD operations for orders, users, and warehouses, plus authentication.
+ */
 public class Main {
     public static void main(String[] args) {
+        // Initialize controllers for managing different entities
         OrderController orderController = new OrderController();
         UserController userController = new UserController();
         WarehouseController warehouseController = new WarehouseController();
         AuthController authController = new AuthController();
+        // Create reader for console input
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
         try {
-            // Example of order actions with user input.
+            // ===== ORDER MANAGEMENT SECTION =====
             System.out.println("--- Order Actions ---");
+            
+            // Display all existing orders
             System.out.println("Current Orders (orderId, description, customerPhone, warehouseId, driverId, deliveryStatus):");
             List<Order> orders = orderController.getAllOrders();
             for (Order order : orders) {
                 System.out.println(order.getOrderId() + ", " + order.getDescription() + ", " + order.getCustomerPhone() + ", " + order.getWarehouseId() + ", " + order.getDriverId() + ", " + order.getDeliveryStatus());
             }
 
+            // Collect input for creating a new order
             System.out.println("\nEnter new order details:");
             System.out.print("orderId: ");
             long orderId = Long.parseLong(reader.readLine());
@@ -42,31 +53,38 @@ public class Main {
             System.out.print("deliveryStatus: ");
             String deliveryStatus = reader.readLine();
 
+            // Create and add the new order
             Order newOrder = new Order(orderId, description, customerPhone, warehouseId, driverId, deliveryStatus);
             orderController.createOrder(newOrder);
 
+            // Display updated order list after creation
             System.out.println("\nUpdated Orders:");
             orders = orderController.getAllOrders();
             for (Order order : orders) {
                 System.out.println(order.getOrderId() + ", " + order.getDescription() + ", " + order.getCustomerPhone() + ", " + order.getWarehouseId() + ", " + order.getDriverId() + ", " + order.getDeliveryStatus());
             }
 
+            // Update an existing order
             orderController.updateOrder();
 
+            // Display order list after update
             System.out.println("\nUpdated Orders after update:");
             orders = orderController.getAllOrders();
             for (Order order : orders) {
                 System.out.println(order.getOrderId() + ", " + order.getDescription() + ", " + order.getCustomerPhone() + ", " + order.getWarehouseId() + ", " + order.getDriverId() + ", " + order.getDeliveryStatus());
             }
 
-            // Example of user actions with user input.
+            // ===== USER MANAGEMENT SECTION =====
             System.out.println("\n--- User Actions ---");
+            
+            // Display all existing users
             System.out.println("Current Users (userId, username, password, role, phoneNumber, name):");
             List<User> users = userController.getAllUsers();
             for (User user : users) {
                 System.out.println(user.getUserId() + ", " + user.getUsername() + ", " + user.getPassword() + ", " + user.getRole() + ", " + user.getPhoneNumber() + ", " + user.getName());
             }
 
+            // Collect input for creating a new user
             System.out.println("\nEnter new user details:");
             System.out.print("userId: ");
             long userId = Long.parseLong(reader.readLine());
@@ -81,23 +99,28 @@ public class Main {
             System.out.print("name: ");
             String name = reader.readLine();
 
+            // Create and add the new user
             User newUser = new User(userId, username, password, role, phoneNumber, name);
             userController.createUser(newUser);
 
+            // Display updated user list
             System.out.println("\nUpdated Users:");
             users = userController.getAllUsers();
             for (User user : users) {
                 System.out.println(user.getUserId() + ", " + user.getUsername() + ", " + user.getPassword() + ", " + user.getRole() + ", " + user.getPhoneNumber() + ", " + user.getName());
             }
 
-            // Example of warehouse actions with user input.
+            // ===== WAREHOUSE MANAGEMENT SECTION =====
             System.out.println("\n--- Warehouse Actions ---");
+            
+            // Display all existing warehouses
             System.out.println("Current Warehouses (warehouseId, warehouseName, location, contactPerson, contactPhone):");
             List<Warehouse> warehouses = warehouseController.getAllWarehouses();
             for (Warehouse warehouse : warehouses) {
                 System.out.println(warehouse.getWarehouseId() + ", " + warehouse.getWarehouseName() + ", " + warehouse.getLocation() + ", " + warehouse.getContactPerson() + ", " + warehouse.getContactPhone());
             }
 
+            // Collect input for creating a new warehouse
             System.out.println("\nEnter new warehouse details:");
             System.out.print("warehouseId: ");
             long warehouseIdInput = Long.parseLong(reader.readLine());
@@ -110,22 +133,27 @@ public class Main {
             System.out.print("contactPhone: ");
             String contactPhone = reader.readLine();
 
+            // Create and add the new warehouse
             Warehouse newWarehouse = new Warehouse(warehouseIdInput, warehouseName, location, contactPerson, contactPhone);
             warehouseController.createWarehouse(newWarehouse);
 
+            // Display updated warehouse list
             System.out.println("\nUpdated Warehouses:");
             warehouses = warehouseController.getAllWarehouses();
             for (Warehouse warehouse : warehouses) {
                 System.out.println(warehouse.getWarehouseId() + ", " + warehouse.getWarehouseName() + ", " + warehouse.getLocation() + ", " + warehouse.getContactPerson() + ", " + warehouse.getContactPhone());
             }
 
-            // Example of authentication with user input.
+            // ===== AUTHENTICATION SECTION =====
             System.out.println("\n--- Authentication ---");
+            
+            // Collect login credentials
             System.out.print("Enter username: ");
             String authUsername = reader.readLine();
             System.out.print("Enter password: ");
             String authPassword = reader.readLine();
 
+            // Attempt authentication
             User authenticatedUser = authController.authenticate(authUsername, authPassword);
             if (authenticatedUser != null) {
                 System.out.println("\nAuthentication successful: " + authenticatedUser.getUsername());
@@ -136,6 +164,7 @@ public class Main {
             }
 
         } catch (IOException e) {
+            // Handle input/output exceptions
             e.printStackTrace();
         }
     }

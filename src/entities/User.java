@@ -1,15 +1,28 @@
 package entities;
 
 public class User {
+    // Unique identifier for the user
     private Long userId;
+
+    // Username of the user
     private String username;
+
+    // Password for authentication
     private String password;
+
+    // Role of the user (e.g., admin, customer)
     private String role;
+
+    // Phone number of the user
     private String phoneNumber;
+
+    // Full name of the user
     private String name;
 
-    public User() {} //Default constructor
+    // Default constructor
+    public User() {}
 
+    // Parameterized constructor to initialize all fields
     public User(Long userId, String username, String password, String role, String phoneNumber, String name) {
         this.userId = userId;
         this.username = username;
@@ -19,6 +32,7 @@ public class User {
         this.name = name;
     }
 
+    // Getter and setter for userId
     public Long getUserId() {
         return userId;
     }
@@ -27,6 +41,7 @@ public class User {
         this.userId = userId;
     }
 
+    // Getter and setter for username
     public String getUsername() {
         return username;
     }
@@ -35,6 +50,7 @@ public class User {
         this.username = username;
     }
 
+    // Getter and setter for password
     public String getPassword() {
         return password;
     }
@@ -43,6 +59,7 @@ public class User {
         this.password = password;
     }
 
+    // Getter and setter for role
     public String getRole() {
         return role;
     }
@@ -51,6 +68,7 @@ public class User {
         this.role = role;
     }
 
+    // Getter and setter for phoneNumber
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -59,6 +77,7 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
+    // Getter and setter for name
     public String getName() {
         return name;
     }
